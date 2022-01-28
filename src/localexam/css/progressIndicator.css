@@ -1,0 +1,53 @@
+/* 
+    Created on : 27 nov. 2021, 20:57:30
+    Author     : Hafid KASSIMI
+*/
+
+.pi {
+    -fx-progress-color: -fx-color-3;
+    -fx-padding: 0 0 -16 0;
+    -fx-box-border: transparent;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+
+.pi .percentage, .pi .tick {
+    -fx-opacity: 0;
+    -fx-fill: null;
+}
+
+.pi .indicator {
+    -fx-background-color: -fx-light-grey;
+    -fx-box-border: transparent;
+    -fx-border-color: -fx-color-5;
+    -fx-border-width: 0.25;
+}
+
+.pi-text {
+    -fx-font-family: "IcoMoon-Free";
+    -fx-text-fill: -fx-dark-grey;
+    -fx-padding: 2 4 2 4;
+    -fx-font-size: 24;
+}
+
+.pi-inner-circle {
+    -fx-fill: -fx-light-grey;
+    -fx-stroke: transparent;
+}
+
+.piTick {
+    -fx-font-family: "IcoMoon-Free";
+    -fx-font-size: 72;
+    -fx-text-fill: -fx-white;
+}
+
+/**/
+
+.pi2 {
+    -fx-progress-color: -fx-color-3;
+    -fx-box-border: transparent;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}

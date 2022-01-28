@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" stylesheets="@css/theme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="localexam.MainWindowController">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="تطبيق">
+                    <items>
+                        <MenuItem fx:id="quitMI" mnemonicParsing="false" text="خروج" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="خيارات">
+                    <items>
+                        <MenuItem fx:id="outputMI" mnemonicParsing="false" text="تحديد مكان حفظ المخرجات" />
+                        <MenuItem fx:id="mattersMI" mnemonicParsing="false" text="تحديد مواد الامتحان" />
+                  <Menu mnemonicParsing="false" text="ترتيب المترشحين">
+                    <items>
+                        <RadioMenuItem fx:id="noOrderRMI" mnemonicParsing="false" selected="true" text="بنفس ترتيب قاعدة البيانات">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="sortMethodTG" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <RadioMenuItem fx:id="codeAscOrderRMI" mnemonicParsing="false" text="حسب رمز مسار تصاعديا" toggleGroup="$sortMethodTG" />
+                        <RadioMenuItem fx:id="codeDescOrderRMI" mnemonicParsing="false" text="حسب رمز مسار تنازليا" toggleGroup="$sortMethodTG" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <RadioMenuItem fx:id="nameAscOrderRMI" mnemonicParsing="false" text="حسب الاسم تصاعديا" toggleGroup="$sortMethodTG" />
+                        <RadioMenuItem fx:id="nameDescOrderRMI" mnemonicParsing="false" text="حسب الاسم تنازليا" toggleGroup="$sortMethodTG" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <RadioMenuItem fx:id="genAscOrderRMI" mnemonicParsing="false" text="حسب الجنس تصاعديا" toggleGroup="$sortMethodTG" />
+                        <RadioMenuItem fx:id="genDescOrderRMI" mnemonicParsing="false" text="حسب الجنس تنازليا" toggleGroup="$sortMethodTG" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <RadioMenuItem fx:id="ageAscOrderRMI" mnemonicParsing="false" text="حسب العمر تصاعديا" toggleGroup="$sortMethodTG" />
+                        <RadioMenuItem fx:id="ageDescOrderRMI" mnemonicParsing="false" text="حسب العمر تنازليا" toggleGroup="$sortMethodTG" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <RadioMenuItem fx:id="randOrderRMI" mnemonicParsing="false" text="ترتيبا عشوائيا" toggleGroup="$sortMethodTG" />
+                    </items>
+                  </Menu>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="؟">
+                    <items>
+                        <MenuItem fx:id="aboutMI" mnemonicParsing="false" text="عن البرمجية" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+            <children>
+                <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="540.0" spacing="6.0" styleClass="main-panel">
+                    <padding>
+                        <Insets bottom="24.0" left="48.0" right="48.0" top="24.0" />
+                    </padding>
+                    <children>
+                        <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" spacing="12.0">
+                            <children>
+                                <Label styleClass="text" text="يرجى إدخال قاعدة بيانات المؤسسة المحملة من موقع مسار:" />
+                                <Button fx:id="selectDbBtn" minWidth="64.0" mnemonicParsing="false" styleClass="btn" text="إدخال" />
+                            </children>
+                        </HBox>
+                        <Separator prefWidth="200.0">
+                            <VBox.margin>
+                                <Insets bottom="12.0" top="12.0" />
+                            </VBox.margin>
+                            <padding>
+                                <Insets left="12.0" right="12.0" />
+                            </padding>
+                        </Separator>
+                        <Label layoutX="58.0" layoutY="206.0" maxWidth="1.7976931348623157E308" styleClass="text" text="المستوى:">
+                            <VBox.margin>
+                                <Insets top="12.0" />
+                            </VBox.margin>
+                        </Label>
+                        <ComboBox fx:id="levelCB" layoutX="58.0" layoutY="229.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="24.0" />
+                        <Label maxWidth="1.7976931348623157E308" styleClass="text" text="أقصى عدد للمترشحين في القاعات:">
+                            <VBox.margin>
+                                <Insets top="12.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Spinner fx:id="maxCandsSP" editable="true" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="24.0" />
+                        <Label maxWidth="1.7976931348623157E308" styleClass="text" text="رقم الامتحان الأول:">
+                            <VBox.margin>
+                                <Insets top="12.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Spinner fx:id="firstCodeSP" editable="true" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="24.0" />
+                        <Label maxWidth="1.7976931348623157E308" styleClass="text" text="رقم القاعة الأولى:">
+                            <VBox.margin>
+                                <Insets top="12.0" />
+                            </VBox.margin>
+                        </Label>
+                        <Spinner fx:id="firstRoomSP" editable="true" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="24.0" />
+                        <Separator layoutX="58.0" layoutY="80.0" prefWidth="200.0">
+                            <VBox.margin>
+                                <Insets bottom="12.0" top="12.0" />
+                            </VBox.margin>
+                            <padding>
+                                <Insets left="12.0" right="12.0" />
+                            </padding>
+                        </Separator>
+                        <HBox alignment="BOTTOM_RIGHT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+                            <children>
+                                <VBox alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="6.0" HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <CheckBox fx:id="listsCHB" lineSpacing="6.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="إعداد لوائح المترشحين." textAlignment="JUSTIFY" textOverrun="CLIP" wrapText="true" />
+                                        <CheckBox fx:id="lists1CHB" lineSpacing="6.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="إعداد لوائح المترشحين (تضم تاريخ الازدياد)." textAlignment="JUSTIFY" textOverrun="CLIP" wrapText="true">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </CheckBox>
+                                        <CheckBox fx:id="pvsCHB" lineSpacing="6.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="إعداد محاضر التوقيعات." textAlignment="JUSTIFY" textOverrun="CLIP" wrapText="true">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </CheckBox>
+                                        <CheckBox fx:id="lablsCHB" lineSpacing="6.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="إعداد لصاقات ترقيم الطاولات." textAlignment="JUSTIFY" textOverrun="CLIP" wrapText="true">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </CheckBox>
+                                        <CheckBox fx:id="callsCHB" lineSpacing="6.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="إعداد استدعاءات التلاميذ." textAlignment="JUSTIFY" textOverrun="CLIP" wrapText="true">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </CheckBox>
+                                        <CheckBox fx:id="techCHB" lineSpacing="6.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="إعداد بطاقة تقنية." textAlignment="JUSTIFY" textOverrun="CLIP" wrapText="true">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </CheckBox>
+                                    </children>
+                                </VBox>
+                                <Button fx:id="generateBtn" disable="true" maxHeight="48.0" maxWidth="-Infinity" minWidth="64.0" mnemonicParsing="false" styleClass="btn" text="إنتــــاج" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <Pane fx:id="overlayP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.0" styleClass="overlay" visible="false" StackPane.alignment="CENTER" />
+                <VBox fx:id="mattersVB" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" spacing="12.0" styleClass="modal" translateY="-600.0" visible="false" StackPane.alignment="CENTER">
+                    <children>
+                        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="6.0">
+                            <children>
+                                <Label text="تحديد يوم:" />
+                                <ComboBox fx:id="dayCB" maxWidth="1.7976931348623157E308" />
+                            </children>
+                        </HBox>
+                        <Separator prefWidth="200.0" />
+                        <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="12.0">
+                            <children>
+                                <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" spacing="6.0">
+                                    <children>
+                                        <Label text="المــادة 01:" />
+                                        <ComboBox fx:id="matter1CB" maxWidth="1.7976931348623157E308" />
+                                        <Label layoutX="10.0" layoutY="10.0" text="المــادة 02:">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <ComboBox fx:id="matter2CB" layoutX="10.0" layoutY="33.0" maxWidth="1.7976931348623157E308" />
+                                        <Label layoutX="10.0" layoutY="64.0" text="المــادة 03:">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <ComboBox fx:id="matter3CB" layoutX="10.0" layoutY="87.0" maxWidth="1.7976931348623157E308" />
+                                        <Label layoutX="10.0" layoutY="118.0" text="المــادة 04:">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <ComboBox fx:id="matter4CB" layoutX="10.0" layoutY="141.0" maxWidth="1.7976931348623157E308" />
+                                        <Label layoutX="10.0" layoutY="172.0" text="المــادة 05:">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <ComboBox fx:id="matter5CB" layoutX="10.0" layoutY="195.0" maxWidth="1.7976931348623157E308" />
+                                        <Label layoutX="10.0" layoutY="226.0" text="المــادة 06:">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <ComboBox fx:id="matter6CB" layoutX="10.0" layoutY="249.0" maxWidth="1.7976931348623157E308" />
+                                        <Label layoutX="10.0" layoutY="280.0" text="المــادة 07:">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <ComboBox fx:id="matter7CB" layoutX="10.0" layoutY="303.0" maxWidth="1.7976931348623157E308" />
+                                    </children>
+                                </VBox>
+                                <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" spacing="6.0">
+                                    <children>
+                                        <Label text="المــادة 08:" />
+                                        <ComboBox fx:id="matter8CB" maxWidth="1.7976931348623157E308" />
+                                        <Label layoutX="10.0" layoutY="10.0" text="المــادة 09:">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <ComboBox fx:id="matter9CB" layoutX="10.0" layoutY="33.0" maxWidth="1.7976931348623157E308" />
+                                        <Label layoutX="10.0" layoutY="64.0" text="المــادة 10:">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <ComboBox fx:id="matter10CB" layoutX="10.0" layoutY="87.0" maxWidth="1.7976931348623157E308" />
+                                        <Label layoutX="10.0" layoutY="118.0" text="المــادة 11:">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <ComboBox fx:id="matter11CB" layoutX="10.0" layoutY="141.0" maxWidth="1.7976931348623157E308" />
+                                        <Label layoutX="10.0" layoutY="172.0" text="المــادة 12:">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <ComboBox fx:id="matter12CB" layoutX="10.0" layoutY="195.0" maxWidth="1.7976931348623157E308" />
+                                        <Label layoutX="10.0" layoutY="226.0" text="المــادة 13:">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <ComboBox fx:id="matter13CB" layoutX="10.0" layoutY="249.0" maxWidth="1.7976931348623157E308" />
+                                        <Label layoutX="10.0" layoutY="280.0" text="المــادة 14:">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <ComboBox fx:id="matter14CB" layoutX="10.0" layoutY="303.0" maxWidth="1.7976931348623157E308" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                        <Separator prefWidth="200.0" />
+                        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="6.0">
+                            <children>
+                                <Label text="إضافة أوحذف مادة:" />
+                                <ComboBox fx:id="editMatCB" editable="true" maxWidth="1.7976931348623157E308" />
+                                <Button fx:id="addMatterBtn" mnemonicParsing="false" text="+" />
+                                <Button fx:id="delMatterBtn" mnemonicParsing="false" text="-" />
+                            </children>
+                        </HBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="12.0" left="36.0" right="36.0" top="12.0" />
+                    </padding>
+                </VBox>
+                <VBox fx:id="genVB" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="24.0" visible="false" StackPane.alignment="CENTER">
+                    <children>
+                        <ProgressIndicator fx:id="genPI" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="140.0" prefWidth="140.0" styleClass="pi2" stylesheets="@css/progressIndicator.css" />
+                    </children>
+                    <padding>
+                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                    </padding>
+                </VBox>
+                <VBox fx:id="aboutVB" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefWidth="480.0" translateY="-600.0" visible="false">
+                    <children>
+                        <FlowPane id="header" alignment="CENTER_LEFT" hgap="8.0">
+                            <VBox.margin>
+                                <Insets />
+                            </VBox.margin>
+                            <padding>
+                                <Insets bottom="8.0" left="12.0" right="8.0" top="8.0" />
+                            </padding>
+                            <children>
+                                <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@icons/48.png" />
+                                    </image>
+                                </ImageView>
+                                <Label fx:id="appName" styleClass="title" text="برمجية محلي">
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </FlowPane>
+                        <VBox alignment="CENTER_LEFT" spacing="10.0">
+                            <children>
+                                <Label layoutX="22.0" layoutY="28.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="message" text="هذه البرمجية موزعة وفق &quot;رخصة غنو لعامة الشعب&quot;. أي أنها برمجية حرة يمكنك مشاركتها وتغيير كافة إصداراتها بحرية..." textAlignment="JUSTIFY" wrapText="true" />
+                                <Label layoutX="22.0" layoutY="55.0" styleClass="title" text="معلومات تقنية:" wrapText="true">
+                                    <font>
+                                        <Font name="System Bold" size="12.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="buildInfos" layoutX="22.0" layoutY="116.0" lineSpacing="3.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="message" text="النسخة: %version%&#10;بتاريخ: %date%&#10;نسخة جافا: 1.8.0_171-b11, Oracle Corporation&#10;" wrapText="true" />
+                                <Label layoutX="22.0" layoutY="78.0" styleClass="message" text="برمجة: ح. قاسمي [ hafid.kassimi@mdrassty.net ]">
+                                    <VBox.margin>
+                                        <Insets top="6.0" />
+                                    </VBox.margin>
+                                </Label>
+                            </children>
+                            <padding>
+                                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                            </padding>
+                        </VBox>
+                    </children>
+                    <styleClass>
+                        <String fx:value="modal" />
+                        <String fx:value="about" />
+                    </styleClass>
+                </VBox>
+            </children>
+        </StackPane>
+    </center>
+   <right>
+          <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="6.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+              <children>
+                  <ImageView fitHeight="256.0" fitWidth="256.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@icons/256.png" />
+                      </image>
+                  </ImageView>
+                  <Label fx:id="appInfo" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="text" text="النسخة _version_&#10;يناير 2022" textAlignment="CENTER">
+                      <padding>
+                          <Insets bottom="2.0" left="6.0" right="6.0" top="2.0" />
+                      </padding>
+                  </Label>
+            <Separator maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+               <VBox.margin>
+                  <Insets bottom="12.0" left="48.0" right="48.0" top="12.0" />
+               </VBox.margin>
+            </Separator>
+            <Label styleClass="title" text="إحصائيات" />
+            <Label contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" text="عدد تلاميذ المؤسسة:">
+               <graphic>
+                  <Label fx:id="allStusLbl" alignment="CENTER_RIGHT" styleClass="counter" text="00" />
+               </graphic>
+               <padding>
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+               </padding>
+            </Label>
+            <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="483.0" maxWidth="1.7976931348623157E308" text="عدد تلاميذ المستوى:">
+               <graphic>
+                  <Label fx:id="levStusLbl" alignment="CENTER_RIGHT" styleClass="counter" text="00" />
+               </graphic>
+               <padding>
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+               </padding>
+            </Label>
+            <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="495.0" maxWidth="1.7976931348623157E308" text="عدد القاعات:">
+               <graphic>
+                  <Label fx:id="roomsLbl" alignment="CENTER_RIGHT" styleClass="counter" text="00" />
+               </graphic>
+               <padding>
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+               </padding>
+            </Label>
+            <Label fx:id="rooms1DetLbl" contentDisplay="RIGHT" layoutX="10.0" layoutY="495.0" maxWidth="1.7976931348623157E308" wrapText="true">
+               <padding>
+                  <Insets bottom="6.0" left="12.0" right="12.0" />
+               </padding>
+            </Label>
+            <Label fx:id="rooms2DetLbl" contentDisplay="RIGHT" layoutX="22.0" layoutY="509.0" maxWidth="1.7976931348623157E308" wrapText="true">
+               <padding>
+                  <Insets bottom="6.0" left="12.0" right="12.0" />
+               </padding>
+            </Label>
+              </children>
+         <padding>
+            <Insets bottom="6.0" left="12.0" right="12.0" top="6.0" />
+         </padding>
+          </VBox>
+   </right>
+</BorderPane>
